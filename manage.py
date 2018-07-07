@@ -18,7 +18,7 @@ def init_database():
     db.drop_all()
     db.create_all()
     for i in range(0, 100):
-        db.session.add(User('牛客' + str(i), 'a' + str(i)))
+        db.session.add(User('游客' + str(i), 'a' + str(i)))
 
         for j in range(0, 10):  # 每人发十张图
             db.session.add(Image(get_image_url(), i + 1))
@@ -30,12 +30,12 @@ def init_database():
     # 更新
     for i in range(0, 100, 3):
         # 通过update函数
-        User.query.filter_by(id=i).update({'username': '33牛客新' + str(i)})
+        User.query.filter_by(id=i).update({'username': '33游客新' + str(i)})
 
     # User.query.filter(User.username.endswith('0')).update({'username': '00新' + User.username}, synchronize_session=False)
     # filter_by多个参数是and
-    User.query.filter_by(id=4, password='a4').update({'username': '44牛客新' + str(i)})
-    User.query.filter_by(id=5, password='a4').update({'username': '55牛客新' + str(i)})
+    User.query.filter_by(id=4, password='a4').update({'username': '44游客新' + str(i)})
+    User.query.filter_by(id=5, password='a4').update({'username': '55游客新' + str(i)})
 
     for i in range(7, 100, 10):
         # 通过设置属性
